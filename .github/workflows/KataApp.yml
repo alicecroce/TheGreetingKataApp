@@ -51,11 +51,11 @@ jobs:
         run: |
           dotnet nuget add source \
             --username alicecroce \
-            --password ${{ secrets.TOKEN }} \
+            --password ${{ secrets.GREETING_KATA_TOKEN }} \
             --store-password-in-clear-text \
             --name github "https://nuget.pkg.github.com/alicecroce/index.json"
 
           dotnet nuget push "Greeting/bin/Release/Greeting.1.0.${{ github.run_number }}.nupkg" \
-            --api-key ${{ secrets.TOKEN }} \
+            --api-key ${{ secrets.GREETING_KATA_TOKEN }} \
             --source "github"
         
