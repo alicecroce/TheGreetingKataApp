@@ -4,12 +4,17 @@
     {
         public string Greet(string name)
         {
-            if (name == null)
+            if (name == null) // Requirement 2
             {
                 return "Hello, my friend.";
             }
 
-            return $"Hello, {name}.";
+            if (name.ToUpper() == name) // Requirement 3
+            {
+                return $"HELLO {name}!";
+            }
+
+            return $"Hello, {name}."; // Requirement 1
         }
     }
 }

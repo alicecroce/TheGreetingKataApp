@@ -26,6 +26,16 @@ namespace GreeterTests
             Assert.Equal("Hello, my friend.", result);
         }
 
+        [Fact]
+        public void Greet_ShouldReturnShoutedGreeting_WhenNameIsAllUppercase()
+        {
+            var greeter = new Greeter();
+
+            var result = greeter.Greet("JERRY");
+
+            Assert.Equal("HELLO JERRY!", result);
+        }
+
 
     }
 }

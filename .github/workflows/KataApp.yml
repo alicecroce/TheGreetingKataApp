@@ -19,3 +19,7 @@ jobs:
          # Step 2: Set up .NET SDK
       - name: Set up .NET Core SDK
         uses: actions/setup-dotnet@v4
+        
+        # Step 3: Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore ./TheGreetingKataApp.sln
