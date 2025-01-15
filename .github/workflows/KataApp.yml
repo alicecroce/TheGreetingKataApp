@@ -39,4 +39,8 @@ jobs:
         # Step 7: Run tests after code modifications
       - name: Run tests after code modifications
         run: dotnet test ./GreeterTests/GreeterTests.csproj 
+
+        # Step 8: Run tests after code modifications
+      - name: Run tests after code modifications
+        run: dotnet test ./GreeterTests/GreeterTests.csproj 
         

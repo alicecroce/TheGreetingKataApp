@@ -76,5 +76,16 @@ namespace GreeterTests
 
             Assert.Equal("Hello, Bob, Charlie, and Dianne.", result);
         }
+
+        [Fact]
+        public void Greet_NamesWithEscapedCommas_ReturnsCorrectGreeting()
+        {
+            var greeter = new Greeter();
+            string name = "Bob, \"Charlie, Dianne\"";
+
+            var result = greeter.Greet(name);
+
+            Assert.Equal("Hello, Bob and Charlie, Dianne.", result);
+        }
     }
 }

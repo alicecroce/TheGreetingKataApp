@@ -4,62 +4,68 @@
     {
         public string Greet(string name)
         {
-            if (name == null) // Requirement 2
+            // Requirement 2: Handle the case when name is null
+            if (name == null)
             {
                 return "Hello, my friend.";
             }
-
-            if (name.ToUpper() == name) // Requirement 3
+            // Requirement 3: Handle the case when name is in uppercase (shouted)
+            if (name.ToUpper() == name)
             {
                 return $"HELLO {name}!";
             }
 
-            // Requirement 6/7
-            var namesList = name.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
-                                 .Select(n => n.Trim())
-                                 .ToList();
+            // Requirement 6 & 8: Handle commas and quotes, and escape them correctly
+            var namesList = new List<string>();
+            var tempName = string.Empty;
+            var insideQuotes = false;
 
-            //Requirement 7
-            List<string> allNames = new List<string>();
-
-            foreach (var n in namesList)
+            foreach (var c in name)
             {
-                if (n.Contains(","))
+                if (c == '"')
                 {
-                    var splitNames = n.Split(',').Select(n => n.Trim()).ToList();
-                    allNames.AddRange(splitNames);
+                    insideQuotes = !insideQuotes;
+                }
+                else if (c == ',' && !insideQuotes)
+                {
+                    namesList.Add(tempName.Trim());
+                    tempName = string.Empty;
                 }
                 else
                 {
-                    allNames.Add(n);
+                    tempName += c;
                 }
             }
 
-            //Requirement 6
+            if (!string.IsNullOrEmpty(tempName))
+            {
+                namesList.Add(tempName.Trim());
+            }
+
             var normalNames = namesList.Where(n => n != n.ToUpper()).ToList();
             var shoutedNames = namesList.Where(n => n == n.ToUpper()).ToList();
 
             string greeting = "";
 
-            // Requirement 1 (modificato)
+            // Requirement 1: Greet based on the number of normal names
             if (normalNames.Count > 0)
             {
-                if (normalNames.Count == 1) 
-                { 
-                    greeting += $"Hello, {normalNames[0]}."; 
-                } 
-                else if (normalNames.Count == 2) 
-                { 
-                    greeting += $"Hello, {normalNames[0]} and {normalNames[1]}."; 
-                } 
-                else 
-                { 
-                    string formattedNames = string.Join(", ", normalNames.Take(normalNames.Count - 1)); 
-                    greeting += $"Hello, {formattedNames}, and {normalNames.Last()}."; 
+                if (normalNames.Count == 1)
+                {
+                    greeting += $"Hello, {normalNames[0]}.";
+                }
+                else if (normalNames.Count == 2)
+                {
+                    greeting += $"Hello, {normalNames[0]} and {normalNames[1]}.";
+                }
+                else
+                {
+                    string formattedNames = string.Join(", ", normalNames.Take(normalNames.Count - 1));
+                    greeting += $"Hello, {formattedNames}, and {normalNames.Last()}.";
                 }
             }
 
-            // Requirement 6 (ulteriore gestione per i nomi urlati)
+            // Requirement 6 (continued): Greet shouted names (all uppercase)
             if (shoutedNames.Count > 0)
             {
                 if (normalNames.Count > 0)
@@ -69,8 +75,9 @@
                 greeting += $"AND HELLO {string.Join(" AND ", shoutedNames)}!";
             }
 
-            // Requirement 1 (saluto di base modificato)
+            // Requirement 1 (continued): Default greeting if no names provided
             return string.IsNullOrEmpty(greeting) ? $"Hello, {name}." : greeting;
         }
+
     }
 }
