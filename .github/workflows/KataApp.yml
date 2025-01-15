@@ -43,4 +43,19 @@ jobs:
         # Step 8: Run tests after code modifications
       - name: Run tests after code modifications
         run: dotnet test ./GreeterTests/GreeterTests.csproj 
+
+      - name: Pack NuGet package
+        run: dotnet pack --configuration Release
+
+      - name: Execute push
+        run: |
+          dotnet nuget add source \
+            --username AnErrorHasOccured \
+            --password ${{ secrets.TOKEN }} \
+            --store-password-in-clear-text \
+            --name github "https://nuget.pkg.github.com/alicecroce/index.json"
+
+          dotnet nuget push "Greeting/bin/Release/Greeting.1.0.${{ github.run_number }}.nupkg" \
+            --api-key ${{ secrets.TOKEN }} \
+            --source "github"
         
