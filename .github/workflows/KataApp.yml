@@ -44,11 +44,12 @@ jobs:
       - name: Run tests after code modifications
         run: dotnet test ./GreeterTests/GreeterTests.csproj 
 
-      - name: Pack NuGet package
-        run: dotnet pack --configuration Release
+      - name: Execute pack
+        run: dotnet pack --configuration Release /p:PackageVersion=1.0.${{ github.run_number }}
 
       - name: Execute push
         run: |
+        
           dotnet nuget add source \
             --username alicecroce \
             --password ${{ secrets.GREETING_KATA_TOKEN }} \
