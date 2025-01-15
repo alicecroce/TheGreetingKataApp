@@ -1,0 +1,17 @@
+name: kata-app-workflow
+run-name: ${{ github.actor}} is starting github actions
+
+on:
+    push:
+      branches:
+        - dev-alice
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
