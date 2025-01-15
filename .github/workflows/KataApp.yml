@@ -26,12 +26,12 @@ jobs:
 
          # Step 4: Build the solution
       - name: Build the solution
-        run: dotnet build ./TheGreetingKataApp.sln --configuration Release --no-restore
+        run: dotnet build ./TheGreetingKataApp.sln --configuration Release
 
       # Step 5: Run tests
       - name: Run tests
-        run: dotnet test ./GreeterTests/GreeterTests.csproj --no-build 
+        run: dotnet test ./GreeterTests/GreeterTests.csproj 
 
         # Step 6: Run tests after code modifications
       - name: Run tests after code modifications
-        run: dotnet test ./GreeterTests/GreeterTests.csproj --no-build
+        run: dotnet test ./GreeterTests/GreeterTests.csproj 
