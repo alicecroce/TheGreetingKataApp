@@ -14,22 +14,46 @@
                 return $"HELLO {name}!";
             }
 
-            if (name.Contains(",")) // Requirement 4
-            {
-                var names = name.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                if (names.Length == 2)
-                {
-                    return $"Hello, {names[0].Trim()} and {names[1].Trim()}.";
-                }
+            // Requirement 6
+            var namesList = name.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
+                                 .Select(n => n.Trim())
+                                 .ToList();
 
-                if (names.Length > 2) // Requirement 5
-                {
-                    string formattedNames = string.Join(", ", names.Take(names.Length - 1).Select(n => n.Trim()));
-                    return $"Hello, {formattedNames}, and {names.Last().Trim()}.";
+            var normalNames = namesList.Where(n => n != n.ToUpper()).ToList();
+            var shoutedNames = namesList.Where(n => n == n.ToUpper()).ToList();
+
+            string greeting = "";
+
+            // Requirement 1 (modificato)
+            if (normalNames.Count > 0)
+            {
+                if (normalNames.Count == 1) 
+                { 
+                    greeting += $"Hello, {normalNames[0]}."; 
+                } 
+                else if (normalNames.Count == 2) 
+                { 
+                    greeting += $"Hello, {normalNames[0]} and {normalNames[1]}."; 
+                } 
+                else 
+                { 
+                    string formattedNames = string.Join(", ", normalNames.Take(normalNames.Count - 1)); 
+                    greeting += $"Hello, {formattedNames}, and {normalNames.Last()}."; 
                 }
             }
 
-            return $"Hello, {name}."; // Requirement 1
+            // Requirement 6 (ulteriore gestione per i nomi urlati)
+            if (shoutedNames.Count > 0)
+            {
+                if (normalNames.Count > 0)
+                {
+                    greeting += " ";
+                }
+                greeting += $"AND HELLO {string.Join(" AND ", shoutedNames)}!";
+            }
+
+            // Requirement 1 (saluto di base modificato)
+            return string.IsNullOrEmpty(greeting) ? $"Hello, {name}." : greeting;
         }
     }
 }

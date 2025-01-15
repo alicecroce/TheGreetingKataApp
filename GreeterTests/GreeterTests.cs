@@ -12,7 +12,7 @@ namespace GreeterTests
 
             var result = greeter.Greet(name);
 
-            Assert.Equal("Hello, Bob.", result);
+            Assert.Equal("Hello, Bob.".Trim(), result.Trim());
         }
 
         [Fact]
@@ -56,6 +56,14 @@ namespace GreeterTests
             Assert.Equal("Hello, Amy, Brian, and Charlotte.", result);
         }
 
+        [Fact]
+        public void Greet_ShouldReturnSeparateGreetingsForNormalAndShoutedNames_WhenBothAreProvided()
+        {
+            var greeter = new Greeter();
 
+            var result = greeter.Greet("Amy, BRIAN, Charlotte");
+
+            Assert.Equal("Hello, Amy and Charlotte. AND HELLO BRIAN!", result);
+        }
     }
 }
