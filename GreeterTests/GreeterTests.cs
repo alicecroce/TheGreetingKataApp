@@ -46,6 +46,16 @@ namespace GreeterTests
             Assert.Equal("Hello, Jill and Jane.", result);
         }
 
+        [Fact]
+        public void Greet_ShouldReturnGreetingWithMultipleNames_WhenMoreThanTwoNamesAreProvided()
+        {
+            var greeter = new Greeter();
+
+            var result = greeter.Greet("Amy, Brian, Charlotte");
+
+            Assert.Equal("Hello, Amy, Brian, and Charlotte.", result);
+        }
+
 
     }
 }
