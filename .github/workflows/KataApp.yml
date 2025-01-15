@@ -34,4 +34,4 @@ jobs:
 
         # Step 6: Run tests after code modifications
       - name: Run tests after code modifications
-        run: dotnet test ./TheGreetingKataApp.Tests/TheGreetingKataApp.Tests.csproj --no-build 
+        run: dotnet test ./TheGreetingKataApp.Tests/TheGreetingKataApp.Tests.csproj --no-build --verbosity normal
