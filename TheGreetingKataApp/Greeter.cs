@@ -14,11 +14,28 @@
                 return $"HELLO {name}!";
             }
 
-            // Requirement 6
+            // Requirement 6/7
             var namesList = name.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
                                  .Select(n => n.Trim())
                                  .ToList();
 
+            //Requirement 7
+            List<string> allNames = new List<string>();
+
+            foreach (var n in namesList)
+            {
+                if (n.Contains(","))
+                {
+                    var splitNames = n.Split(',').Select(n => n.Trim()).ToList();
+                    allNames.AddRange(splitNames);
+                }
+                else
+                {
+                    allNames.Add(n);
+                }
+            }
+
+            //Requirement 6
             var normalNames = namesList.Where(n => n != n.ToUpper()).ToList();
             var shoutedNames = namesList.Where(n => n == n.ToUpper()).ToList();
 
