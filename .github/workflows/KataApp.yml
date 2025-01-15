@@ -30,8 +30,8 @@ jobs:
 
       # Step 5: Run tests
       - name: Run tests
-        run: dotnet test ./GreeterTests/TheGreetingKataApp.Tests.csproj --no-build 
+        run: dotnet test ./GreeterTests/GreeterTests.csproj --no-build 
 
         # Step 6: Run tests after code modifications
       - name: Run tests after code modifications
-        run: dotnet test ./GreeterTests/TheGreetingKataApp.Tests.csproj --no-build --verbosity normal
+        run: dotnet test ./GreeterTests/GreeterTests.csproj --no-build
