@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheGreetingKataApp", "TheGreetingKataApp\TheGreetingKataApp.csproj", "{04DC1EA4-7004-415E-A60F-8C615F0424A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreeterTests", "GreeterTests\GreeterTests.csproj", "{AFB209C7-5D83-43CF-B6FA-A4CD2F59D45F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04DC1EA4-7004-415E-A60F-8C615F0424A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DC1EA4-7004-415E-A60F-8C615F0424A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DC1EA4-7004-415E-A60F-8C615F0424A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DC1EA4-7004-415E-A60F-8C615F0424A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB209C7-5D83-43CF-B6FA-A4CD2F59D45F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB209C7-5D83-43CF-B6FA-A4CD2F59D45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB209C7-5D83-43CF-B6FA-A4CD2F59D45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB209C7-5D83-43CF-B6FA-A4CD2F59D45F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
